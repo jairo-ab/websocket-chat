@@ -28,6 +28,17 @@ class SettingsController{
 
         return res.json(settings)
     }
+
+    async update(req: Request, res: Response) {
+        const { username } = req.params
+        const { chat } = req.body
+
+        const settingsService = new SettingsService()
+
+        const settings = await settingsService.update(username, chat)
+
+        return res.json(settings)
+    }
 }
 
 export { SettingsController }
